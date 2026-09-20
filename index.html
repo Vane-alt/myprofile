@@ -699,7 +699,7 @@
             font-weight: 700;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--text);
+            color: var(--white);
             margin-bottom: 1.8rem;
         }
 
@@ -717,14 +717,14 @@
             align-items: center;
         }
 
-        .tech-swiper-row .swiper-slide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: scale(0.65);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-            opacity: 0.35;
+        .tech-swiper-row .swiper-slide display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.65);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease;
+        opacity: 0.35;
         }
 
         .tech-swiper-row .swiper-slide-active {
@@ -746,6 +746,9 @@
             position: relative;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Radial glow behind the active center logo */
+
 
         @keyframes logoGlow {
             from {
@@ -776,7 +779,7 @@
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.1em;
-            color: var(--text);
+            color: var(--white);
             text-transform: uppercase;
             opacity: 0;
             transform: translateY(5px);
@@ -830,6 +833,9 @@
         .project-card:hover .project-thumb img {
             transform: scale(1.05);
         }
+
+
+
 
         .thumb-gradient {
             width: 100%;
@@ -1539,6 +1545,7 @@
                                 </svg>
                                 View Projects
                             </a>
+
                         </div>
                         <div class="hero-stats fade-in fade-in-delay-4">
                             <div>
@@ -1615,7 +1622,8 @@
                             <i class="fa-solid fa-mobile-screen-button"></i>
                         </div>
                         <div class="skill-name">Mobile Apps</div>
-                        <div class="skill-desc">Flutter &amp; Kotlin — cross-platform and native Android development
+                        <div class="skill-desc">Flutter &amp; Kotlin — cross-platform and native Android
+                            development
                         </div>
                     </div>
 
@@ -1625,7 +1633,8 @@
                             <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="skill-name">Database</div>
-                        <div class="skill-desc">MySQL &amp; SQL Server — schema design, optimization, stored procedures
+                        <div class="skill-desc">MySQL &amp; SQL Server — schema design, optimization, stored
+                            procedures
                         </div>
                     </div>
 
@@ -1635,7 +1644,8 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <div class="skill-name">Security</div>
-                        <div class="skill-desc">Encryption of Data in Database, pfSense firewall, network security,
+                        <div class="skill-desc">Encryption of Data in Database, pfSense firewall, network
+                            security,
                             access control &amp; VPN setup</div>
                     </div>
 
@@ -1645,7 +1655,8 @@
                             <i class="fa-solid fa-cloud"></i>
                         </div>
                         <div class="skill-name">Cloud</div>
-                        <div class="skill-desc">VMware virtualization, cloud infrastructure &amp; server management
+                        <div class="skill-desc">VMware virtualization, cloud infrastructure &amp; server
+                            management
                         </div>
                     </div>
 
@@ -1677,526 +1688,607 @@
                         <div class="skill-desc">Clean, responsive interfaces — user-centered design thinking
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Tech Carousel -->
-                <div class="tech-carousel-section fade-in">
-                    <p class="tech-carousel-label">Languages &amp; Technologies</p>
 
-                    <!-- Row 1 -->
-                    <div class="tech-swiper-row">
-                        <div class="swiper techSwiper1">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                                            alt="HTML"></div><span class="tech-logo-label">HTML</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                                            alt="CSS"></div><span class="tech-logo-label">CSS</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                                            alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                                            alt="TypeScript"></div><span class="tech-logo-label">TypeScript</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-                                            alt="PHP">
-                                    </div><span class="tech-logo-label">PHP</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row 2 -->
-                    <div class="tech-swiper-row">
-                        <div class="swiper techSwiper2">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                                            alt="SQL"></div><span class="tech-logo-label">SQL</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-                                            alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
-                                            alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
-                                            alt="Swift"></div><span class="tech-logo-label">Swift</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                                            alt="Java"></div><span class="tech-logo-label">Java</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Row 3 -->
-                    <div class="tech-swiper-row">
-                        <div class="swiper techSwiper3">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-                                            alt="C#"></div><span class="tech-logo-label">C#</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                                            alt="C++"></div><span class="tech-logo-label">C++</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
-                                            alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tech-logo-wrap"><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                                            alt="Git">
-                                    </div><span class="tech-logo-label">Git</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+    </div>
 
+    <!-- Tech Carousel -->
+    <div class="tech-carousel-section fade-in">
+        <p class="tech-carousel-label">Languages &amp; Technologies</p>
+
+        <!-- Row 1 -->
+        <div class="tech-swiper-row">
+            <div class="swiper techSwiper1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML"></div><span class="tech-logo-label">HTML</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                alt="CSS"></div><span class="tech-logo-label">CSS</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                alt="TypeScript"></div><span class="tech-logo-label">TypeScript</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                        </div><span class="tech-logo-label">PHP</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML"></div><span class="tech-logo-label">HTML</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                alt="CSS"></div><span class="tech-logo-label">CSS</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- ══════════════ PROJECTS ══════════════ -->
-        <section id="projects" aria-label="Projects section">
-            <div class="container">
-                <div class="section-header"
-                    style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                    <div>
-                        <div class="section-tag">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                                <rect x="2" y="3" width="20" height="14" rx="2" />
-                                <path d="M8 21h8m-4-4v4" />
-                            </svg>
-                            Portfolio
-                        </div>
-                        <h2 class="section-title">Featured <span style="color:var(--gold)">Projects</span></h2>
-                        <p class="section-subtitle">Data is kept for privacy.</p>
+        </div>
+        <!-- Row 2 -->
+        <div class="tech-swiper-row">
+            <div class="swiper techSwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                alt="SQL"></div><span class="tech-logo-label">SQL</span>
                     </div>
-                    <!-- Lottie Animation for Projects Section -->
-                    <div id="projects-lottie-container"
-                        style="width: 250px; height: 250px; position: absolute; right: 0; top: -60px; pointer-events: none;">
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
                     </div>
-                </div>
-
-                <div class="projects-grid">
-
-                    <!-- Project 1: PROCTAD -->
-                    <div class="glass project-card fade-in" id="project-proctad">
-                        <div class="project-thumb">
-                            <img src="proctor.png" alt="PROCTAD Management System" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:var(--gold);">Enterprise</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">PROCTAD Management System</h3>
-                            <p class="project-desc">A comprehensive enterprise management system handling procurement,
-                                records, and administrative data for an institutional environment. Features role-based
-                                access control and network-integrated deployment.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS4</span>
-                                <span class="tech-tag">Javascript/ Jquery</span>
-                                <span class="tech-tag">SQL</span>
-                                <span class="tech-tag">Bootstrap4</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-proctad">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
                     </div>
-
-                    <!-- Project 2: Biometric -->
-                    <div class="glass project-card fade-in fade-in-delay-1" id="project-biometric">
-                        <div class="project-thumb">
-                            <img src="biometric_record_system.png" alt="Biometric Records System" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#a78bfa;">Security</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Biometric Records System</h3>
-                            <p class="project-desc">An integrated hybrid biometric and records management system,
-                                connecting fingerprint scanners to a centralized SQL Server database. Enables real-time
-                                records and reporting for PDL's.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">Jquery</span>
-                                <span class="tech-tag">Vb.net</span>
-                                <span class="tech-tag">SQL</span>
-                                <span class="tech-tag">Biometric SDK</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-biometric">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                                alt="Swift"></div><span class="tech-logo-label">Swift</span>
                     </div>
-
-                    <!-- Project 3: Travelert -->
-                    <div class="glass project-card fade-in fade-in-delay-2" id="project-travelert">
-                        <div class="project-thumb">
-                            <img src="travelert_image.jpg" alt="Travelert Mobile App" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Travelert Mobile App</h3>
-                            <p class="project-desc">A cross-platform travel companion based in Baguio City, "City of
-                                Pines" built with Flutter, providing
-                                real-time location services, route planning, and travel alerts. Integrates Leaflet Maps
-                                API for dynamic navigation and points of interest.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Dart</span>
-                                <span class="tech-tag">Leaflet API</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-travelert">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                alt="Java"></div><span class="tech-logo-label">Java</span>
                     </div>
-
-                    <!-- Project 4: Barangay DTR System -->
-                    <div class="glass project-card fade-in fade-in-delay-3" id="project-dtr">
-                        <div class="project-thumb">
-                            <img src="dtr_sys.png" alt="Barangay DTR Management System" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#38bdf8;">Desktop</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Barangay DTR Management System</h3>
-                            <p class="project-desc">A customized desktop Daily Time Record (DTR) system developed for
-                                Barangay San Roque in Delfin Albano, Isabela. It enables official registry management,
-                                fingerprint enrollment, attendance tracking, and automated DTR printing.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">C#</span>
-                                <span class="tech-tag">VB.net</span>
-                                <span class="tech-tag">SQL Server</span>
-                                <span class="tech-tag">SDK</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-dtr">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                alt="SQL"></div><span class="tech-logo-label">SQL</span>
                     </div>
-
-                    <!-- Project 5: SFC PC Inventory Mobile App -->
-                    <div class="glass project-card fade-in fade-in-delay-4" id="project-inventory">
-                        <div class="project-thumb">
-                            <img src="sfc_inventory.jpg" alt="SFC PC Inventory Mobile App" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">SFC PC Inventory Mobile App</h3>
-                            <p class="project-desc">A robust mobile application developed for Saint Ferdinand College to
-                                manage and monitor computer laboratory inventory. Features include a PC overview
-                                dashboard, QR/barcode scanning for asset auditing, room-wise PC mapping, and detailed
-                                logs history.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Flutter/ Dart</span>
-                                <span class="tech-tag">SQLite</span>
-                                <span class="tech-tag">REST API</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-inventory">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
                     </div>
-
-                    <!-- Project 6: SSS-Sync -->
-                    <div class="glass project-card fade-in fade-in-delay-5" id="project-sss-sync">
-                        <div class="project-thumb">
-                            <img src="sss.png" alt="SSS-Sync Web Portal" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#3b82f6;">Web
-                                    Portal</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">SSS-Sync Web Portal</h3>
-                            <p class="project-desc">SSS-Sync is a dedicated web portal developed for the SSS Ilagan Branch
-                                to streamline digital services and improve accessibility for local constituents. The
-                                platform serves as a centralized hub featuring virtual queue management tools and
-                                easy-to-navigate mobile application tutorials. Built for reliability and performance, the
-                                project's source code is managed via GitHub, integrated with modern deployment pipelines,
-                                and secured using Cloudflare for robust infrastructure and traffic optimization.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">GitHub</span>
-                                <span class="tech-tag">Cloudflare</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-sss-sync">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
                     </div>
-
-                    <!-- Project 7: ATMOS-CTL -->
-                    <div class="glass project-card fade-in fade-in-delay-2" id="project-atmos">
-                        <div class="project-thumb">
-                            <img src="atmos.png" alt="ATMOS-CTL Environmental Telemetry Portal" />
-                            <div class="thumb-overlay"></div>
-                            <div class="thumb-icon">
-                                <span
-                                    style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#60a5fa;">IoT / Telemetry</span>
-                            </div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">ATMOS-CTL Telemetry Portal</h3>
-                            <p class="project-desc">An environmental monitoring and telemetry portal tracking real-time sensor data including humidity, ambient temperature, air quality, and thermal array imaging powered by ESP32 microcontrollers.</p>
-                            <div class="tech-stack">
-                                <span class="tech-tag">ESP32</span>
-                                <span class="tech-tag">IoT</span>
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Sensors API</span>
-                            </div>
-                            <a href="#" class="project-link" id="link-atmos">
-                                View Details
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ══════════════ ABOUT ══════════════ -->
-        <section id="about" aria-label="About section">
-            <div class="container">
-                <div class="section-header">
+        <!-- Row 3 -->
+        <div class="tech-swiper-row">
+            <div class="swiper techSwiper3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                                alt="C#"></div><span class="tech-logo-label">C#</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                                alt="C++"></div><span class="tech-logo-label">C++</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
+                                alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                        </div><span class="tech-logo-label">Git</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                                alt="C#"></div><span class="tech-logo-label">C#</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                                alt="C++"></div><span class="tech-logo-label">C++</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
+                                alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tech-logo-wrap"><img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                        </div><span class="tech-logo-label">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </section>
+
+    <!-- ══════════════ PROJECTS ══════════════ -->
+    <section id="projects" aria-label="Projects section">
+        <div class="container">
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                <div>
                     <div class="section-tag">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                            <path
-                                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <path d="M8 21h8m-4-4v4" />
                         </svg>
-                        About Me
+                        Portfolio
                     </div>
-                    <h2 class="section-title">The <span style="color:var(--gold)">Developer</span> Behind the Code</h2>
+                    <h2 class="section-title">Featured <span style="color:var(--gold)">Projects</span></h2>
+                    <p class="section-subtitle">Data is kept for privacy.</p>
                 </div>
-                <div class="about-inner">
-                    <!-- Image Placeholder -->
-                    <div class="about-img-wrap fade-in">
-                        <div class="about-placeholder" style="background:none;border:none;padding:0;">
-                            <img src="ivan-profile.jpg" alt="Ivan Joe A. Acosta"
-                                style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);display:block;" />
+                <!-- Lottie Animation for Projects Section -->
+                <div id="projects-lottie-container"
+                    style="width: 250px; height: 250px; position: absolute; right: 0; top: -60px; pointer-events: none;">
+                </div>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Project 1: PROCTAD -->
+<div class="glass project-card fade-in" id="project-proctad">
+    <div class="project-thumb">
+        <img src="proctor.png" alt="PROCTAD Management System" />
+        <div class="thumb-overlay"></div>
+        <div class="thumb-icon">
+            <span
+                style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:var(--gold);">Enterprise</span>
+        </div>
+    </div>
+    <div class="project-body">
+        <h3 class="project-title">PROCTAD Management System</h3>
+        <p class="project-desc">A comprehensive enterprise management system handling procurement,
+            records, and administrative data for an institutional environment. Features role-based
+            access control and network-integrated deployment.</p>
+        <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS4</span>
+            <span class="tech-tag">Javascript/ Jquery</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Bootstrap4</span>
+        </div>
+        <a href="#" class="project-link" id="link-proctad">
+            View Details
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+            </svg>
+        </a>
+    </div>
+</div>
+
+                <!-- Project 2: Biometric -->
+                <div class="glass project-card fade-in fade-in-delay-1" id="project-biometric">
+                    <div class="project-thumb">
+                        <img src="biometric_record_system.png" alt="Biometric Records System" />
+                        <div class="thumb-overlay"></div>
+                        <div class="thumb-icon">
+                            <span
+                                style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#a78bfa;">Security</span>
                         </div>
-                        <div class="about-info-card">
-                            <div class="about-card-row">
-                                <span class="about-card-icon">
-                                    <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
-                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                                    </svg>
-                                </span>
-                                <div>
-                                    <div class="about-card-text">City of Ilagan</div>
-                                    <div class="about-card-sub">Philippines</div>
-                                </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Biometric Records System</h3>
+                        <p class="project-desc">An integrated hybrid biometric and records management system,
+                            connecting fingerprint scanners to a centralized SQL Server database. Enables real-time
+                            records and reporting for PDL's.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Jquery</span>
+                            <span class="tech-tag">Vb.net</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Biometric SDK</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-biometric">
+                            View Details
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Travelert -->
+                <div class="glass project-card fade-in fade-in-delay-2" id="project-travelert">
+                    <div class="project-thumb">
+                        <img src="travelert_image.jpg" alt="Travelert Mobile App" />
+                        <div class="thumb-overlay"></div>
+                        <div class="thumb-icon">
+                            <span
+                                style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Travelert Mobile App</h3>
+                        <p class="project-desc">A cross-platform travel companion based in Baguio City, "City of
+                            Pines" built with Flutter, providing
+                            real-time location services, route planning, and travel alerts. Integrates Leaflet Maps
+                            API for dynamic navigation and points of interest.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Leaflet API</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-travelert">
+                            View Details
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Barangay DTR System -->
+                <div class="glass project-card fade-in fade-in-delay-3" id="project-dtr">
+                    <div class="project-thumb">
+                        <img src="dtr_sys.png" alt="Barangay DTR Management System" />
+                        <div class="thumb-overlay"></div>
+                        <div class="thumb-icon">
+                            <span
+                                style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#38bdf8;">Desktop</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Barangay DTR Management System</h3>
+                        <p class="project-desc">A customized desktop Daily Time Record (DTR) system developed for
+                            Barangay San Roque in Delfin Albano, Isabela. It enables official registry management,
+                            fingerprint enrollment, attendance tracking, and automated DTR printing.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">VB.net</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">SDK</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-dtr">
+                            View Details
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5: SFC PC Inventory Mobile App -->
+                <div class="glass project-card fade-in fade-in-delay-4" id="project-inventory">
+                    <div class="project-thumb">
+                        <img src="sfc_inventory.jpg" alt="SFC PC Inventory Mobile App" />
+                        <div class="thumb-overlay"></div>
+                        <div class="thumb-icon">
+                            <span
+                                style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">SFC PC Inventory Mobile App</h3>
+                        <p class="project-desc">A robust mobile application developed for Saint Ferdinand College to
+                            manage and monitor computer laboratory inventory. Features include a PC overview
+                            dashboard, QR/barcode scanning for asset auditing, room-wise PC mapping, and detailed
+                            logs history.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flutter/ Dart</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-inventory">
+                            View Details
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6: SSS-Sync -->
+                <div class="glass project-card fade-in fade-in-delay-5" id="project-sss-sync">
+                    <div class="project-thumb">
+                        <img src="sss.png" alt="SSS-Sync Web Portal" />
+                        <div class="thumb-overlay"></div>
+                        <div class="thumb-icon">
+                            <span
+                                style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#3b82f6;">Web
+                                Portal</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">SSS-Sync Web Portal</h3>
+                        <p class="project-desc">SSS-Sync is a dedicated web portal developed for the SSS Ilagan Branch
+                            to streamline digital services and improve accessibility for local constituents. The
+                            platform serves as a centralized hub featuring virtual queue management tools and
+                            easy-to-navigate mobile application tutorials. Built for reliability and performance, the
+                            project's source code is managed via GitHub, integrated with modern deployment pipelines,
+                            and secured using Cloudflare for robust infrastructure and traffic optimization.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">Cloudflare</span>
+                        </div>
+                        <a href="#" class="project-link" id="link-sss-sync">
+                            View Details
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Project 3: ATMOS-CTL -->
+<div class="glass project-card fade-in fade-in-delay-2" id="project-atmos">
+    <div class="project-thumb">
+        <img src="atmos.png" alt="ATMOS-CTL Environmental Telemetry Portal" />
+        <div class="thumb-overlay"></div>
+        <div class="thumb-icon">
+            <span
+                style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#60a5fa;">IoT / Telemetry</span>
+        </div>
+    </div>
+    <div class="project-body">
+        <h3 class="project-title">ATMOS-CTL Telemetry Portal</h3>
+        <p class="project-desc">An environmental monitoring and telemetry portal tracking real-time sensor data including humidity, ambient temperature, air quality, and thermal array imaging powered by ESP32 microcontrollers[cite: 2].</p>
+        <div class="tech-stack">
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Sensors API</span>
+        </div>
+        <a href="#" class="project-link" id="link-atmos">
+            View Details
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+            </svg>
+        </a>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ ABOUT ══════════════ -->
+    <section id="about" aria-label="About section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
+                        <path
+                            d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                    </svg>
+                    About Me
+                </div>
+                <h2 class="section-title">The <span style="color:var(--gold)">Developer</span> Behind the Code</h2>
+            </div>
+            <div class="about-inner">
+                <!-- Image Placeholder -->
+                <div class="about-img-wrap fade-in">
+                    <div class="about-placeholder" style="background:none;border:none;padding:0;">
+                        <img src="ivan-profile.jpg" alt="Ivan Joe A. Acosta"
+                            style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);display:block;" />
+                    </div>
+                    <div class="about-info-card">
+                        <div class="about-card-row">
+                            <span class="about-card-icon">
+                                <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <div class="about-card-text">City of Ilagan</div>
+                                <div class="about-card-sub">Philippines</div>
                             </div>
-                            <div class="about-card-row">
-                                <span class="about-card-icon">
-                                    <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
-                                        <path
-                                            d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 3L6 10v6h12v-6l-6-4z" />
-                                    </svg>
-                                </span>
-                                <div>
-                                    <div class="about-card-text">BSIT</div>
-                                    <div class="about-card-sub">Graduate 2026</div>
-                                </div>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-icon">
+                                <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
+                                    <path
+                                        d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 3L6 10v6h12v-6l-6-4z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <div class="about-card-text">BSIT</div>
+                                <div class="about-card-sub">Graduate 2026</div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Content -->
-                    <div class="fade-in fade-in-delay-1">
-                        <div class="about-bio">
-                            <p>I'm Ivan Joe A. Acosta, specializing in Frontend Web and Application Development. I'm
-                                based in the City of Ilagan, Isabela, Philippines, and I create modern UI and UX
-                                solutions. I'm passionate about building practical, well-engineered solutions that solve
-                                real-world problems for users.</p>
+                <!-- Content -->
+                <div class="fade-in fade-in-delay-1">
+                    <div class="about-bio">
+                        <p>I'm Ivan Joe A. Acosta, specializing in Frontend Web and Application Development. I'm
+                            based in the City of Ilagan, Isabela, Philippines, and I create modern UI and UX
+                            solutions. I'm passionate about building practical, well-engineered solutions that solve
+                            real-world problems for users.</p>
 
-                            <p>My journey in technology spans web development, mobile applications, database management,
-                                and network infrastructure. I thrive at the intersection of software and systems,
-                                whether it's developing applications, building websites, or deploying secure network
-                                environments.</p>
+                        <p>My journey in technology spans web development, mobile applications, database management,
+                            and network infrastructure. I thrive at the intersection of software and systems,
+                            whether
+                            it's developing applications, building websites, or deploying secure network
+                            environments.</p>
 
-                            <p>I'm a graduate of the Bachelor of Science in Information Technology from Saint Ferdinand
-                                College, and I'm always eager to learn and take on challenging projects that push my
-                                boundaries.</p>
+                        <p>I'm a graduate of the Bachelor of Science in Information Technology from Saint Ferdinand
+                            College, and I'm always eager to learn and take on challenging projects that push my
+                            boundaries.</p>
+                    </div>
+
+                    <div class="about-education">
+                        <div class="edu-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                            </svg>
                         </div>
+                        <div>
+                            <div class="edu-school">Saint Ferdinand College</div>
+                            <div class="edu-degree">Bachelor of Science in Information Technology</div>
+                            <span class="edu-year">Graduated: 2026</span>
+                        </div>
+                    </div>
 
-                        <div class="about-education">
-                            <div class="edu-icon">
+                </div>
+            </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" aria-label="Contact section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    Get in Touch
+                </div>
+                <h2 class="section-title">Let's <span style="color:var(--gold)">Connect</span></h2>
+                <p class="section-subtitle">Looking for a reliable developer to bring your project to life or join
+                    your team? I'm currently accepting IT related opportunities.</p>
+            </div>
+
+            <div class="contact-inner">
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <div class="contact-info">
+                        <h3>Hire Me</h3>
+                        <p>Whether you have a clear project scope, an open developer position, or need a technical
+                            solution for your business, My inbox is always open. Let's discuss how I can add value
+                            to your team.</p>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:ivanjoea.acosta@email.com" class="contact-link" id="contact-email">
+                            <div class="contact-link-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
                                 </svg>
                             </div>
                             <div>
-                                <div class="edu-school">Saint Ferdinand College</div>
-                                <div class="edu-degree">Bachelor of Science in Information Technology</div>
-                                <span class="edu-year">Graduated: 2026</span>
+                                <div class="contact-link-label">Email</div>
+                                <div class="contact-link-value">acostaivanjoe6@email.com</div>
                             </div>
-                        </div>
-
+                        </a>
+                        <a href="https://github.com/ivanjoea-acosta" target="_blank" rel="noopener" class="contact-link"
+                            id="contact-github">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-link-label">GitHub</div>
+                                <div class="contact-link-value">github.com/Vane-alt</div>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/ivanjoea-acosta" target="_blank" rel="noopener"
+                            class="contact-link" id="contact-linkedin">
+                            <div class="contact-link-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                    <path
+                                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                    <rect x="2" y="9" width="4" height="12" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-link-label">LinkedIn</div>
+                                <div class="contact-link-value">linkedin.com/in/ivan-acosta-ba6472342/</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
+
+                <!-- Contact Visual (Lottie Animation) -->
+                <div class="glass fade-in fade-in-delay-1" id="lottie-container"
+                    style="padding:2rem;border-radius:var(--radius); display: flex; align-items: center; justify-content: center; width: 100%; min-height: 10px; height: 450px; margin: 0 auto;">
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+                <script src="animation_data.js"></script>
+                <script src="projects_animation_data.js"></script>
+                <script>
+                    if (typeof lottieData !== 'undefined') {
+                        lottie.loadAnimation({
+                            container: document.getElementById('lottie-container'),
+                            renderer: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            animationData: lottieData
+                        });
+                    } else {
+                        console.error("Lottie data not loaded. Make sure animation_data.js is present.");
+                    }
+
+                    // Load the projects section animation
+                    if (document.getElementById('projects-lottie-container') && typeof projectsLottieData !== 'undefined') {
+                        lottie.loadAnimation({
+                            container: document.getElementById('projects-lottie-container'),
+                            renderer: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            animationData: projectsLottieData
+                        });
+                    } else {
+                        console.error("Projects Lottie data not loaded. Make sure projects_animation_data.js is present.");
+                    }
+                </script>
+
             </div>
-        </section>
-
-        <!-- ══════════════ CONTACT ══════════════ -->
-        <section id="contact" aria-label="Contact section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-tag">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                            <path
-                                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                        </svg>
-                        Get in Touch
-                    </div>
-                    <h2 class="section-title">Let's <span style="color:var(--gold)">Connect</span></h2>
-                    <p class="section-subtitle">Looking for a reliable developer to bring your project to life or join
-                        your team? I'm currently accepting IT related opportunities.</p>
-                </div>
-
-                <div class="contact-inner">
-                    <!-- Contact Info -->
-                    <div class="fade-in">
-                        <div class="contact-info">
-                            <h3>Hire Me</h3>
-                            <p>Whether you have a clear project scope, an open developer position, or need a technical
-                                solution for your business, My inbox is always open. Let's discuss how I can add value
-                                to your team.</p>
-                        </div>
-                        <div class="contact-links">
-                            <a href="mailto:acostaivanjoe6@email.com" class="contact-link" id="contact-email">
-                                <div class="contact-link-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                        <path
-                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                        <polyline points="22,6 12,13 2,6" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="contact-link-label">Email</div>
-                                    <div class="contact-link-value">acostaivanjoe6@email.com</div>
-                                </div>
-                            </a>
-                            <a href="https://github.com/Vane-alt" target="_blank" rel="noopener" class="contact-link"
-                                id="contact-github">
-                                <div class="contact-link-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                        <path
-                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="contact-link-label">GitHub</div>
-                                    <div class="contact-link-value">github.com/Vane-alt</div>
-                                </div>
-                            </a>
-                            <a href="https://linkedin.com/in/ivan-acosta-ba6472342/" target="_blank" rel="noopener"
-                                class="contact-link" id="contact-linkedin">
-                                <div class="contact-link-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                        <path
-                                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="contact-link-label">LinkedIn</div>
-                                    <div class="contact-link-value">linkedin.com/in/ivan-acosta-ba6472342/</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Contact Visual (Lottie Animation) -->
-                    <div class="glass fade-in fade-in-delay-1" id="lottie-container"
-                        style="padding:2rem;border-radius:var(--radius); display: flex; align-items: center; justify-content: center; width: 100%; min-height: 10px; height: 450px; margin: 0 auto;">
-                    </div>
-                </div>
-            </div>
-        </section>
+    </section>
 
     </div><!-- end .page -->
 
@@ -2214,33 +2306,7 @@
     </button>
 
     <!-- ─── JAVASCRIPT ─── -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-    <script src="animation_data.js"></script>
-    <script src="projects_animation_data.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
-        /* ─── Lottie Animations Initialization ─── */
-        if (typeof lottieData !== 'undefined') {
-            lottie.loadAnimation({
-                container: document.getElementById('lottie-container'),
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                animationData: lottieData
-            });
-        }
-
-        if (document.getElementById('projects-lottie-container') && typeof projectsLottieData !== 'undefined') {
-            lottie.loadAnimation({
-                container: document.getElementById('projects-lottie-container'),
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                animationData: projectsLottieData
-            });
-        }
-
         /* ─── Year ─── */
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -2364,31 +2430,65 @@
         }, { threshold: 0.12 });
         fadeEls.forEach(el => observer.observe(el));
 
-        /* ─── Swiper Carousels Initialization ─── */
+        /* ─── Contact form ─── */
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('form-submit-btn');
+            btn.disabled = true;
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!`;
+            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+                btn.style.background = '';
+                form.reset();
+            }, 3000);
+        });
+    </script>
+
+    <!-- Swiper JS for Tech Carousel -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
         (function () {
+            // Duplicate the slides in the DOM multiple times to ensure enough buffer for seamless looping
             document.querySelectorAll('.tech-swiper-row .swiper-wrapper').forEach(wrapper => {
                 const originalHTML = wrapper.innerHTML;
+                // Triple the slides (original + 2 clones)
                 wrapper.innerHTML = originalHTML + originalHTML + originalHTML;
             });
 
-            const swiperOptions = {
-                loop: true,
+            const baseConfig = {
                 slidesPerView: 3,
                 centeredSlides: true,
-                spaceBetween: 30,
-                autoplay: {
-                    delay: 2000,
-                    disableOnInteraction: false,
-                },
+                initialSlide: 1,
+                loop: true,
+                loopAdditionalSlides: 10,
+                spaceBetween: 40,
+                allowTouchMove: false,
                 breakpoints: {
-                    640: { slidesPerView: 4, spaceBetween: 40 },
-                    1024: { slidesPerView: 6, spaceBetween: 50 }
+                    640: { slidesPerView: 4, spaceBetween: 56 },
+                    1024: { slidesPerView: 5, spaceBetween: 72 }
                 }
             };
 
-            new Swiper('.techSwiper1', swiperOptions);
-            new Swiper('.techSwiper2', { ...swiperOptions, autoplay: { delay: 2500, disableOnInteraction: false } });
-            new Swiper('.techSwiper3', { ...swiperOptions, autoplay: { delay: 3000, disableOnInteraction: false } });
+            new Swiper('.techSwiper1', {
+                ...baseConfig,
+                speed: 1400,
+                autoplay: { delay: 0, disableOnInteraction: false }
+            });
+
+            new Swiper('.techSwiper2', {
+                ...baseConfig,
+                speed: 1400,
+                autoplay: { delay: 0, disableOnInteraction: false, reverseDirection: true }
+            });
+
+            new Swiper('.techSwiper3', {
+                ...baseConfig,
+                speed: 1400,
+                autoplay: { delay: 0, disableOnInteraction: false }
+            });
         })();
     </script>
 </body>
