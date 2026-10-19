@@ -1248,6 +1248,11 @@
         }
 
         .project-link {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
@@ -1264,6 +1269,199 @@
         .project-link svg {
             width: 14px;
             height: 14px;
+        }
+
+        .project-thumb {
+            cursor: pointer;
+        }
+
+        /* ─── Bootstrap-like Project Modal ─── */
+        .project-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 10, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            overscroll-behavior: contain;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
+        }
+
+        .project-modal-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .project-modal-dialog {
+            width: 100%;
+            max-width: 760px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.92) translateY(24px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+        }
+
+        .project-modal-backdrop.show .project-modal-dialog {
+            transform: scale(1) translateY(0);
+        }
+
+        .project-modal-content {
+            background: rgba(18, 18, 30, 0.96);
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 30px var(--gold-glow);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .project-modal-header {
+            padding: 1.2rem 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .project-modal-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .project-modal-badge {
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .project-modal-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .project-modal-close {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+
+        .project-modal-close:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: var(--gold-glow);
+            transform: rotate(90deg);
+        }
+
+        .project-modal-body {
+            padding: 1.6rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .project-modal-img-wrap {
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-modal-img-wrap img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .project-modal-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        .project-modal-tech-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+        }
+
+        .project-modal-footer {
+            padding: 1rem 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .project-modal-footer .btn {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-modal-backdrop {
+                padding: 1rem 0.8rem;
+            }
+
+            .project-modal-header {
+                padding: 1rem 1.2rem;
+            }
+
+            .project-modal-title {
+                font-size: 1.15rem;
+            }
+
+            .project-modal-body {
+                padding: 1.2rem;
+            }
+
+            .project-modal-img-wrap img {
+                max-height: 260px;
+            }
+
+            .project-modal-desc {
+                font-size: 0.88rem;
+            }
         }
 
         /* ─── ABOUT ─── */
@@ -2732,13 +2930,14 @@
                                 <span class="tech-tag">SQL</span>
                                 <span class="tech-tag">Bootstrap4</span>
                             </div>
-                            <a href="#" class="project-link" id="link-proctad">
+                            <button type="button" class="project-link" id="link-proctad"
+                                onclick="openProjectModalById('project-proctad')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2765,13 +2964,14 @@
                                 <span class="tech-tag">SQL</span>
                                 <span class="tech-tag">Biometric SDK</span>
                             </div>
-                            <a href="#" class="project-link" id="link-biometric">
+                            <button type="button" class="project-link" id="link-biometric"
+                                onclick="openProjectModalById('project-biometric')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2796,13 +2996,14 @@
                                 <span class="tech-tag">Dart</span>
                                 <span class="tech-tag">Leaflet API</span>
                             </div>
-                            <a href="#" class="project-link" id="link-travelert">
+                            <button type="button" class="project-link" id="link-travelert"
+                                onclick="openProjectModalById('project-travelert')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2827,13 +3028,14 @@
                                 <span class="tech-tag">SQL Server</span>
                                 <span class="tech-tag">SDK</span>
                             </div>
-                            <a href="#" class="project-link" id="link-dtr">
+                            <button type="button" class="project-link" id="link-dtr"
+                                onclick="openProjectModalById('project-dtr')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2858,13 +3060,14 @@
                                 <span class="tech-tag">SQLite</span>
                                 <span class="tech-tag">REST API</span>
                             </div>
-                            <a href="#" class="project-link" id="link-inventory">
+                            <button type="button" class="project-link" id="link-inventory"
+                                onclick="openProjectModalById('project-inventory')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2897,13 +3100,14 @@
                                 <span class="tech-tag">GitHub</span>
                                 <span class="tech-tag">Cloudflare</span>
                             </div>
-                            <a href="#" class="project-link" id="link-sss-sync">
+                            <button type="button" class="project-link" id="link-sss-sync"
+                                onclick="openProjectModalById('project-sss-sync')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -2932,13 +3136,14 @@
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">Sensors API</span>
                             </div>
-                            <a href="#" class="project-link" id="link-atmos">
+                            <button type="button" class="project-link" id="link-atmos"
+                                onclick="openProjectModalById('project-atmos')">
                                 View Details
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -3141,9 +3346,46 @@
 
     <!-- ─── FOOTER ─── -->
     <footer>
-        <p>Developed by <span>Ivan Joe A. Acosta</span> · City of Ilagan, Philippines · &copy; <span id="year"></span>
+        <p>Developed by <span>Ivan Joe A. Acosta</span> · Delfin Albano, Philippines · &copy; <span id="year"></span>
         </p>
     </footer>
+
+    <!-- ─── BOOTSTRAP-LIKE PROJECT MODAL ─── -->
+    <div class="project-modal-backdrop" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="project-modal-dialog">
+            <div class="project-modal-content">
+                <!-- Header -->
+                <div class="project-modal-header">
+                    <div class="project-modal-title-wrap">
+                        <span class="project-modal-badge" id="modalBadge">Enterprise</span>
+                        <h3 class="project-modal-title" id="modalTitle">Project Title</h3>
+                    </div>
+                    <button class="project-modal-close" id="modalCloseBtn" aria-label="Close modal">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Body -->
+                <div class="project-modal-body">
+                    <div class="project-modal-img-wrap">
+                        <img id="modalImg" src="" alt="Project Photo" />
+                    </div>
+                    <p class="project-modal-desc" id="modalDesc"></p>
+                    <div>
+                        <div class="project-modal-tech-title">Technologies Used:</div>
+                        <div class="tech-stack" id="modalTechStack" style="margin-top:0.6rem;margin-bottom:0;"></div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="project-modal-footer">
+                    <button class="btn btn-outline" id="modalFooterClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scroll to top -->
     <button id="scroll-top" aria-label="Scroll to top">
@@ -3298,18 +3540,114 @@
 
         /* ─── Contact form ─── */
         const form = document.getElementById('contact-form');
-        form.addEventListener('submit', function (e) {
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const btn = document.getElementById('form-submit-btn');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!`;
+                    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+                        btn.style.background = '';
+                        form.reset();
+                    }, 3000);
+                }
+            });
+        }
+
+        /* ─── Project Details Modal (Bootstrap style) ─── */
+        const projectModal = document.getElementById('projectModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalTechStack = document.getElementById('modalTechStack');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalFooterClose = document.getElementById('modalFooterClose');
+
+        let savedScrollY = 0;
+
+        function openProjectModal(card) {
+            if (!card) return;
+            savedScrollY = window.scrollY || document.documentElement.scrollTop;
+            const img = card.querySelector('.project-thumb img');
+            const title = card.querySelector('.project-title');
+            const badge = card.querySelector('.thumb-icon span');
+            const desc = card.querySelector('.project-desc');
+            const techStack = card.querySelector('.tech-stack');
+
+            if (img) {
+                const src = img.getAttribute('src') || img.src;
+                modalImg.src = src;
+                modalImg.alt = img.getAttribute('alt') || 'Project Preview';
+            }
+            if (title) modalTitle.textContent = title.textContent.trim();
+            if (desc) modalDesc.textContent = desc.textContent.trim();
+            if (badge) {
+                modalBadge.textContent = badge.textContent.trim();
+                modalBadge.style.cssText = badge.style.cssText;
+            }
+            if (techStack) {
+                modalTechStack.innerHTML = techStack.innerHTML;
+            }
+
+            projectModal.classList.add('show');
+            projectModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+        }
+
+        window.openProjectModalById = function (cardId) {
+            const card = document.getElementById(cardId);
+            if (card) openProjectModal(card);
+        };
+
+        function closeProjectModal() {
+            projectModal.classList.remove('show');
+            projectModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+        }
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            const btn = card.querySelector('.project-link');
+            const thumb = card.querySelector('.project-thumb');
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openProjectModal(card);
+                });
+            }
+            if (thumb) {
+                thumb.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openProjectModal(card);
+                });
+            }
+        });
+
+        modalCloseBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const btn = document.getElementById('form-submit-btn');
-            btn.disabled = true;
-            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!`;
-            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-                btn.style.background = '';
-                form.reset();
-            }, 3000);
+            closeProjectModal();
+        });
+        modalFooterClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeProjectModal();
+        });
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                closeProjectModal();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && projectModal.classList.contains('show')) {
+                closeProjectModal();
+            }
         });
     </script>
 
