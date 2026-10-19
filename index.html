@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Ivan Joe A. Acosta — Full-Stack Developer & Systems Administrator</title>
     <meta name="description"
-        content="Portfolio of Ivan Joe A. Acosta — Full-Stack Developer & Systems Administrator based in City of Ilagan, Isabela, Philippines." />
+        content="Portfolio of Ivan Joe A. Acosta — Full-Stack Developer & Systems Administrator based in Delfin Albano, Isabela, Philippines." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,10 +45,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -57,6 +59,19 @@
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a,
+        button,
+        input,
+        textarea,
+        select,
+        .skill-card,
+        .project-card,
+        .btn {
+            touch-action: manipulation;
         }
 
         a {
@@ -550,8 +565,9 @@
         /* Floating badges on profile */
         .float-badge {
             position: absolute;
-            background: var(--surface-2);
+            background: rgba(15, 15, 26, 0.88);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-gold);
             border-radius: var(--radius-sm);
             padding: 0.55rem 0.9rem;
@@ -562,7 +578,9 @@
             align-items: center;
             gap: 0.45rem;
             animation: float 3s ease-in-out infinite;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+            white-space: nowrap;
+            z-index: 10;
         }
 
         .float-badge:nth-child(2) {
@@ -1746,16 +1764,23 @@
             }
 
             .profile-frame {
-                width: 220px;
-                height: 270px;
+                width: 230px;
+                height: 285px;
+            }
+
+            .float-badge {
+                font-size: 0.75rem;
+                padding: 0.45rem 0.8rem;
             }
 
             .float-badge:nth-child(2) {
-                right: -10px;
+                top: 15px;
+                right: -15px;
             }
 
             .float-badge:nth-child(3) {
-                left: -10px;
+                bottom: 35px;
+                left: -15px;
             }
 
             /* Skills Bento → 2 col */
@@ -1880,24 +1905,24 @@
             }
 
             .profile-frame {
-                width: 190px;
-                height: 240px;
+                width: 200px;
+                height: 250px;
             }
 
             .float-badge {
-                font-size: 0.7rem;
-                padding: 0.38rem 0.65rem;
+                font-size: 0.72rem;
+                padding: 0.4rem 0.75rem;
                 gap: 0.35rem;
             }
 
             .float-badge:nth-child(2) {
-                right: -4px;
+                right: -8px;
                 top: 10px;
             }
 
             .float-badge:nth-child(3) {
-                left: -4px;
-                bottom: 40px;
+                left: -8px;
+                bottom: 25px;
             }
 
             /* Skills bento → 1 col on mobile */
@@ -2028,6 +2053,234 @@
             }
         }
 
+        /* ─── Responsive — Ultra-Small Phone (≤360px) ─── */
+        @media (max-width: 360px) {
+            .profile-frame {
+                width: 175px;
+                height: 220px;
+            }
+
+            .float-badge {
+                font-size: 0.65rem;
+                padding: 0.32rem 0.55rem;
+                gap: 0.25rem;
+            }
+
+            .float-badge:nth-child(2) {
+                right: -4px;
+                top: 8px;
+            }
+
+            .float-badge:nth-child(3) {
+                left: -4px;
+                bottom: 18px;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                gap: 0.8rem;
+            }
+
+            .hero-stat-num {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ─── Responsive — Phone Landscape (≤600px height) ─── */
+        @media (orientation: landscape) and (max-height: 600px) {
+            #navbar {
+                height: 52px;
+                padding: 0 max(1.5rem, env(safe-area-inset-right, 0px)) 0 max(1.5rem, env(safe-area-inset-left, 0px));
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .mobile-menu {
+                top: 52px;
+                max-height: calc(100vh - 52px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 1rem 1.5rem;
+                gap: 0.3rem;
+            }
+
+            .mobile-menu a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.88rem;
+            }
+
+            section {
+                padding: 45px 0;
+            }
+
+            .section-header {
+                margin-bottom: 1.8rem;
+            }
+
+            /* Hero in Landscape: Clean side-by-side layout */
+            #home {
+                min-height: auto;
+                padding-top: 66px;
+                padding-bottom: 30px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1.15fr 0.85fr;
+                text-align: left;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .hero-visual {
+                order: 2;
+                margin: 0;
+            }
+
+            .profile-frame {
+                width: 180px;
+                height: 225px;
+            }
+
+            .float-badge {
+                font-size: 0.68rem;
+                padding: 0.32rem 0.6rem;
+            }
+
+            .float-badge:nth-child(2) {
+                top: 8px;
+                right: -6px;
+            }
+
+            .float-badge:nth-child(3) {
+                bottom: 14px;
+                left: -6px;
+            }
+
+            .hero-eyebrow {
+                justify-content: flex-start;
+                margin-bottom: 0.5rem;
+                font-size: 0.78rem;
+            }
+
+            .hero-title {
+                font-size: clamp(1.4rem, 4vw, 1.95rem);
+                line-height: 1.15;
+                margin-bottom: 0.35rem;
+            }
+
+            .hero-role {
+                font-size: 0.92rem;
+                margin-bottom: 0.45rem;
+            }
+
+            .hero-desc {
+                font-size: 0.84rem;
+                line-height: 1.5;
+                margin: 0 0 0.9rem 0;
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: flex-start;
+                gap: 0.6rem;
+            }
+
+            .hero-buttons .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.82rem;
+            }
+
+            .hero-stats {
+                margin-top: 0.9rem;
+                padding-top: 0.7rem;
+                gap: 1.2rem;
+                justify-content: flex-start;
+            }
+
+            .hero-stat-num {
+                font-size: 1.3rem;
+            }
+
+            .hero-stat-label {
+                font-size: 0.7rem;
+            }
+
+            /* Skills Grid in Landscape */
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.85rem;
+            }
+
+            .skill-card {
+                min-height: 150px;
+                padding: 1.2rem 1rem;
+            }
+
+            #skill-web {
+                min-height: 170px;
+            }
+
+            .skill-bg-number {
+                font-size: 3.2rem;
+            }
+
+            /* Projects Grid in Landscape */
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem;
+            }
+
+            .project-thumb {
+                height: 155px;
+            }
+
+            /* About in Landscape */
+            .about-inner {
+                grid-template-columns: 210px 1fr !important;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .about-info-card {
+                bottom: -0.5rem;
+                right: 0;
+                padding: 0.6rem 0.9rem;
+            }
+
+            /* Contact in Landscape */
+            .contact-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            #lottie-container {
+                height: 220px !important;
+            }
+
+            #scroll-top {
+                bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+                right: max(1rem, env(safe-area-inset-right, 0px));
+                width: 38px;
+                height: 38px;
+            }
+        }
+
         /* ─── Typing cursor ─── */
         .typed-cursor {
             color: var(--gold);
@@ -2147,17 +2400,6 @@
                                 <img src="ivan-profile.jpg" alt="Ivan Joe A. Acosta — Full-Stack Developer" />
                                 <div class="profile-name-tag">Ivan Joe A. Acosta</div>
                                 <div class="profile-role-tag">Full-Stack Developer</div>
-                            </div>
-                            <!-- Floating badges -->
-                            <div class="float-badge">
-                                <span class="badge-dot"></span> Available for hire
-                            </div>
-                            <div class="float-badge">
-                                <svg viewBox="0 0 24 24" fill="var(--gold)" width="14" height="14">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                                </svg>
-                                Quezon City, PH
                             </div>
                         </div>
                     </div>
@@ -3013,17 +3255,36 @@
         /* ─── Hamburger menu ─── */
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             const open = hamburger.classList.toggle('open');
             mobileMenu.classList.toggle('open', open);
             hamburger.setAttribute('aria-expanded', open);
+            document.body.style.overflow = (open && window.innerWidth <= 768 && window.innerHeight > 550) ? 'hidden' : '';
         });
         mobileMenu.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => {
                 hamburger.classList.remove('open');
                 mobileMenu.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', false);
+                document.body.style.overflow = '';
             });
+        });
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+                document.body.style.overflow = '';
+            }
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+                document.body.style.overflow = '';
+            }
         });
 
         /* ─── Scroll fade-in observer ─── */
