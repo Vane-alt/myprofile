@@ -629,65 +629,384 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(12, 1fr);
             gap: 1.2rem;
         }
 
+        /* Bento card span assignments */
+        #skill-web {
+            grid-column: span 5;
+            grid-row: span 2;
+        }
+
+        #skill-mobile {
+            grid-column: span 4;
+        }
+
+        #skill-database {
+            grid-column: span 3;
+        }
+
+        #skill-security {
+            grid-column: span 4;
+        }
+
+        #skill-cloud {
+            grid-column: span 3;
+        }
+
+        #skill-api {
+            grid-column: span 5;
+        }
+
+        #skill-devops {
+            grid-column: span 4;
+        }
+
+        #skill-uiux {
+            grid-column: span 3;
+        }
+
+        /* Per-card accent colors */
+        #skill-web {
+            --card-color: 99, 102, 241;
+        }
+
+        #skill-mobile {
+            --card-color: 34, 197, 94;
+        }
+
+        #skill-database {
+            --card-color: 59, 130, 246;
+        }
+
+        #skill-security {
+            --card-color: 239, 68, 68;
+        }
+
+        #skill-cloud {
+            --card-color: 14, 165, 233;
+        }
+
+        #skill-api {
+            --card-color: 251, 191, 36;
+        }
+
+        #skill-devops {
+            --card-color: 168, 85, 247;
+        }
+
+        #skill-uiux {
+            --card-color: 244, 114, 182;
+        }
+
+        /* ── Base Skill Card (Bento) ── */
         .skill-card {
-            padding: 2rem 1.5rem;
-            text-align: center;
-            cursor: default;
+            padding: 2rem 1.8rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 180px;
+        }
+
+        /* Featured tall card */
+        #skill-web {
+            justify-content: space-between;
+            min-height: 380px;
+        }
+
+        /* Ghost big number decoration across skill cards */
+        .skill-bg-number {
+            position: absolute;
+            top: 0.3rem;
+            right: 1rem;
+            font-family: var(--font-display);
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: rgba(var(--card-color), 0.08);
+            pointer-events: none;
+            user-select: none;
+            transition: color 0.4s ease, transform 0.4s ease;
+            z-index: 0;
+        }
+
+        #skill-web .skill-bg-number {
+            font-size: 6.5rem;
+            top: 0.5rem;
+            right: 1.2rem;
+        }
+
+        .skill-card:hover .skill-bg-number {
+            color: rgba(var(--card-color), 0.16);
+            transform: scale(1.06);
+        }
+
+        .skill-card>*:not(.skill-bg-number):not(.skill-card-bar) {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Corner glow blob */
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--card-color), 0.16) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        /* Shimmer sweep */
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.65s ease;
+            pointer-events: none;
+        }
+
+        .skill-card:hover::before {
+            top: -20px;
+            right: -20px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(var(--card-color), 0.26) 0%, transparent 70%);
+        }
+
+        .skill-card:hover::after {
+            left: 160%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.012);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(var(--card-color), 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(var(--card-color), 0.4);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Skill tag chip */
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.65rem;
+            border-radius: 99px;
+            background: rgba(var(--card-color), 0.12);
+            border: 1px solid rgba(var(--card-color), 0.25);
+            color: rgba(var(--card-color), 0.95);
+            margin-bottom: 1rem;
+            align-self: flex-start;
+            transition: background 0.3s ease;
+        }
+
+        .skill-card:hover .skill-tag {
+            background: rgba(var(--card-color), 0.22);
         }
 
         .skill-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1.2rem;
-            background: var(--gold-glow);
-            border: 1px solid var(--border-gold);
-            border-radius: 16px;
+            width: 54px;
+            height: 54px;
+            margin-bottom: 1.3rem;
+            background: rgba(var(--card-color), 0.13);
+            border: 1px solid rgba(var(--card-color), 0.28);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background var(--transition), box-shadow var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .skill-card:hover .skill-icon {
-            background: var(--gold-glow);
-            box-shadow: 0 0 24px var(--gold-glow);
+            background: rgba(var(--card-color), 0.24);
+            border-color: rgba(var(--card-color), 0.58);
+            box-shadow: 0 0 22px rgba(var(--card-color), 0.28), 0 8px 22px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1) rotate(-4deg);
         }
 
-        .skill-icon svg,
         .skill-icon i {
-            width: 30px;
-            height: 30px;
-            font-size: 28px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform var(--transition), color var(--transition);
+            font-size: 22px;
+            color: rgba(var(--card-color), 0.85);
+            transition: transform 0.4s ease, color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .skill-card:hover .skill-icon i {
             transform: scale(1.1);
-            color: var(--gold);
+            color: rgb(var(--card-color));
+            text-shadow: 0 0 14px rgba(var(--card-color), 0.55);
         }
 
         .skill-name {
             font-family: var(--font-display);
             font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+            color: var(--text);
+            transition: color 0.3s ease;
+        }
+
+        .skill-card:hover .skill-name {
+            color: rgb(var(--card-color));
         }
 
         .skill-desc {
             font-size: 0.82rem;
             color: var(--text-dim);
-            line-height: 1.5;
+            line-height: 1.6;
+            transition: color 0.3s ease;
         }
 
-        /* ─── Tech Carousel ─── */
+        .skill-card:hover .skill-desc {
+            color: var(--text-muted);
+        }
+
+        /* Bottom accent bar */
+        .skill-card-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(var(--card-color), 0.85), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-card:hover .skill-card-bar {
+            opacity: 1;
+        }
+
+        /* ─── Tech Focus Grid (Glassmorphism) ─── */
+        .tech-focus-section {
+            margin-top: 5rem;
+        }
+
+        .tech-focus-label {
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .tech-focus-label::before,
+        .tech-focus-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .tech-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tech-focus-grid.row-2 {
+            grid-template-columns: repeat(5, 1fr);
+            max-width: calc(100% * 5/6);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tech-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 0.6rem;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .tech-pill::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(251, 191, 36, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .tech-pill:hover::before {
+            opacity: 1;
+        }
+
+        .tech-pill:hover {
+            transform: translateY(-6px) scale(1.05);
+            border-color: rgba(251, 191, 36, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(251, 191, 36, 0.15);
+        }
+
+        .tech-pill img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: grayscale(30%) brightness(90%);
+            transition: filter 0.35s ease, transform 0.35s ease;
+        }
+
+        .tech-pill:hover img {
+            filter: grayscale(0%) brightness(110%) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+            transform: scale(1.1);
+        }
+
+        .tech-pill-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.35s ease;
+            line-height: 1.2;
+        }
+
+        .tech-pill:hover .tech-pill-name {
+            color: var(--gold);
+        }
+
+        /* Tech Carousel ─── (kept for backward compat but hidden) */
         .tech-carousel-section {
             margin-top: 4rem;
             overflow: hidden;
@@ -717,14 +1036,15 @@
             align-items: center;
         }
 
-        .tech-swiper-row .swiper-slide display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: scale(0.65);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 0.4s ease;
-        opacity: 0.35;
+        .tech-swiper-row .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.65);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
+            opacity: 0.35;
         }
 
         .tech-swiper-row .swiper-slide-active {
@@ -746,9 +1066,6 @@
             position: relative;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* Radial glow behind the active center logo */
-
 
         @keyframes logoGlow {
             from {
@@ -1324,10 +1641,19 @@
             transition-delay: 0.4s;
         }
 
-        /* ─── Responsive ─── */
+        /* ─── Responsive — Tablet (≤1024px) ─── */
         @media (max-width: 1024px) {
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-focus-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .tech-focus-grid.row-2 {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 100%;
             }
 
             .projects-grid {
@@ -1343,7 +1669,7 @@
             }
 
             .about-img-wrap {
-                max-width: 320px;
+                max-width: 360px;
                 margin: 0 auto;
             }
 
@@ -1355,8 +1681,13 @@
                 width: 280px;
                 height: 340px;
             }
+
+            .section-title {
+                font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            }
         }
 
+        /* ─── Responsive — Mobile (≤768px) ─── */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -1367,12 +1698,18 @@
             }
 
             section {
-                padding: 70px 0;
+                padding: 60px 0;
             }
 
+            .container {
+                padding: 0 1.2rem;
+            }
+
+            /* Hero */
             .hero-inner {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero-visual {
@@ -1381,10 +1718,13 @@
 
             .hero-buttons {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.75rem;
             }
 
             .hero-stats {
                 justify-content: center;
+                gap: 1.5rem;
             }
 
             .hero-eyebrow {
@@ -1394,11 +1734,12 @@
             .hero-desc {
                 margin-left: auto;
                 margin-right: auto;
+                font-size: 0.95rem;
             }
 
             .profile-frame {
-                width: 240px;
-                height: 290px;
+                width: 220px;
+                height: 270px;
             }
 
             .float-badge:nth-child(2) {
@@ -1409,45 +1750,273 @@
                 left: -10px;
             }
 
+            /* Skills Bento → 2 col */
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
+            #skill-web,
+            #skill-mobile,
+            #skill-database,
+            #skill-security,
+            #skill-cloud,
+            #skill-api,
+            #skill-devops,
+            #skill-uiux {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            #skill-web {
+                min-height: 240px;
+            }
+
+            .skill-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .skill-bg-number {
+                font-size: 3.6rem;
+                top: 0.2rem;
+                right: 0.6rem;
+            }
+
+            #skill-web .skill-bg-number {
+                font-size: 4.5rem;
+            }
+
+            /* Tech Grid */
+            .tech-focus-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+
+            .tech-focus-grid.row-2 {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 100%;
+            }
+
+            .tech-pill img {
+                width: 34px;
+                height: 34px;
+            }
+
+            .tech-pill {
+                padding: 0.8rem 0.4rem;
+            }
+
+            /* Projects */
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
+            /* About */
             .about-info-card {
                 right: 0;
                 bottom: -1rem;
             }
 
+            /* Contact */
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* Section header */
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.7rem, 6vw, 2.2rem);
+            }
+
             #particle-canvas {
                 display: none;
             }
+
+            /* Contact lottie */
+            #lottie-container {
+                height: 280px !important;
+            }
         }
 
+        /* ─── Responsive — Small Phone (≤480px) ─── */
         @media (max-width: 480px) {
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
+            #navbar {
+                padding: 0 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
 
             .hero-title {
-                font-size: 2.1rem;
+                font-size: clamp(1.9rem, 8vw, 2.4rem);
+            }
+
+            .hero-role {
+                font-size: 1rem;
+            }
+
+            .hero-desc {
+                font-size: 0.9rem;
             }
 
             .profile-frame {
-                width: 200px;
-                height: 250px;
+                width: 190px;
+                height: 240px;
             }
 
             .float-badge {
-                font-size: 0.72rem;
-                padding: 0.4rem 0.7rem;
+                font-size: 0.7rem;
+                padding: 0.38rem 0.65rem;
+                gap: 0.35rem;
+            }
+
+            .float-badge:nth-child(2) {
+                right: -4px;
+                top: 10px;
+            }
+
+            .float-badge:nth-child(3) {
+                left: -4px;
+                bottom: 40px;
+            }
+
+            /* Skills bento → 1 col on mobile */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            #skill-web,
+            #skill-mobile,
+            #skill-database,
+            #skill-security,
+            #skill-cloud,
+            #skill-api,
+            #skill-devops,
+            #skill-uiux {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            #skill-web {
+                min-height: 200px;
+            }
+
+            .skill-bg-number {
+                font-size: 4rem;
+            }
+
+            .skill-card {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .skill-icon {
+                width: 54px;
+                height: 54px;
+                border-radius: 14px;
+            }
+
+            .skill-name {
+                font-size: 0.88rem;
+            }
+
+            .skill-desc {
+                font-size: 0.76rem;
+            }
+
+            /* Tech grid */
+            .tech-focus-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.6rem;
+            }
+
+            .tech-focus-grid.row-2 {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 100%;
+            }
+
+            .tech-pill {
+                padding: 0.7rem 0.3rem;
+                border-radius: 10px;
+            }
+
+            .tech-pill img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .tech-pill-name {
+                font-size: 0.6rem;
+            }
+
+            /* Section */
+            .section-title {
+                font-size: clamp(1.5rem, 7vw, 2rem);
+            }
+
+            .btn {
+                padding: 0.7rem 1.3rem;
+                font-size: 0.88rem;
+            }
+
+            .hero-stats {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-stat-num {
+                font-size: 1.5rem;
+            }
+
+            /* Projects */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-thumb {
+                height: 170px;
+            }
+
+            /* About info card */
+            .about-info-card {
+                right: 0.5rem;
+                bottom: -0.5rem;
+                padding: 0.8rem 1rem;
+            }
+
+            /* Contact */
+            .contact-inner {
+                gap: 2rem;
+            }
+
+            #lottie-container {
+                height: 220px !important;
+            }
+
+            /* Footer */
+            footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.78rem;
+            }
+
+            #scroll-top {
+                bottom: 1.2rem;
+                right: 1.2rem;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1528,13 +2097,13 @@
                             Hi, I'm <span class="accent">Ivan Joe</span><br />Acosta
                         </h1>
                         <p class="hero-role fade-in fade-in-delay-2">
-                            An inspiring Frontend Developer
+                            Proficient in Website Developer
                             <span class="typed-cursor">|</span>
                         </p>
                         <p class="hero-desc fade-in fade-in-delay-2">
                             Specializing in the development of robust web and mobile applications, with a focus on
                             delivering seamless digital experiences.
-                            Based in City of Ilagan, Philippines, dedicated to writing purposeful and efficient code.
+                            Based in Delfin Albano, Philippines, dedicated to writing purposeful and efficient code.
                         </p>
                         <div class="hero-buttons fade-in fade-in-delay-3">
                             <a href="#projects" class="btn btn-gold" id="hero-view-projects">
@@ -1549,7 +2118,7 @@
                         </div>
                         <div class="hero-stats fade-in fade-in-delay-4">
                             <div>
-                                <div class="hero-stat-num">6+</div>
+                                <div class="hero-stat-num">7+</div>
                                 <div class="hero-stat-label">Projects Built</div>
                             </div>
                             <div>
@@ -1606,689 +2175,717 @@
 
                 <div class="skills-grid">
 
-                    <!-- Web Development -->
-                    <div class="glass skill-card fade-in" id="skill-web">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-globe"></i>
+                    <!-- Web Development (Featured — tall, 2-row) -->
+                    <div class="skill-card fade-in" id="skill-web">
+                        <span class="skill-bg-number">01</span>
+                        <div>
+                            <span class="skill-tag">Featured</span>
+                            <div class="skill-icon">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div class="skill-name">Web Development</div>
+                            <div class="skill-desc">PHP, HTML/CSS, JavaScript — building full-stack web apps with clean
+                                architecture and modern patterns.</div>
                         </div>
-                        <div class="skill-name">Web Development</div>
-                        <div class="skill-desc">PHP, HTML/CSS, JavaScript — building full-stack web apps
-                        </div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- Mobile Apps -->
-                    <div class="glass skill-card fade-in fade-in-delay-1" id="skill-mobile">
+                    <div class="skill-card fade-in fade-in-delay-1" id="skill-mobile">
+                        <span class="skill-bg-number">02</span>
+                        <span class="skill-tag">Mobile</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-mobile-screen-button"></i>
                         </div>
                         <div class="skill-name">Mobile Apps</div>
-                        <div class="skill-desc">Flutter &amp; Kotlin — cross-platform and native Android
-                            development
+                        <div class="skill-desc">Flutter &amp; Kotlin — cross-platform and native Android development
                         </div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- Database -->
-                    <div class="glass skill-card fade-in fade-in-delay-2" id="skill-database">
+                    <div class="skill-card fade-in fade-in-delay-2" id="skill-database">
+                        <span class="skill-bg-number">03</span>
+                        <span class="skill-tag">Data</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="skill-name">Database</div>
-                        <div class="skill-desc">MySQL &amp; SQL Server — schema design, optimization, stored
-                            procedures
+                        <div class="skill-desc">MySQL &amp; SQL Server — schema design, optimization, stored procedures
                         </div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- Security -->
-                    <div class="glass skill-card fade-in fade-in-delay-3" id="skill-security">
+                    <div class="skill-card fade-in fade-in-delay-3" id="skill-security">
+                        <span class="skill-bg-number">04</span>
+                        <span class="skill-tag">Security</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <div class="skill-name">Security</div>
-                        <div class="skill-desc">Encryption of Data in Database, pfSense firewall, network
-                            security,
-                            access control &amp; VPN setup</div>
+                        <div class="skill-desc">Encryption, pfSense firewall, network security, access control &amp; VPN
+                            setup</div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- Cloud -->
-                    <div class="glass skill-card fade-in" id="skill-cloud">
+                    <div class="skill-card fade-in" id="skill-cloud">
+                        <span class="skill-bg-number">05</span>
+                        <span class="skill-tag">Cloud</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-cloud"></i>
                         </div>
-                        <div class="skill-name">Cloud</div>
-                        <div class="skill-desc">VMware virtualization, cloud infrastructure &amp; server
-                            management
+                        <div class="skill-name">Cloud &amp; Infra</div>
+                        <div class="skill-desc">VMware virtualization, cloud infrastructure &amp; server management
                         </div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- API -->
-                    <div class="glass skill-card fade-in fade-in-delay-1" id="skill-api">
+                    <div class="skill-card fade-in fade-in-delay-1" id="skill-api">
+                        <span class="skill-bg-number">06</span>
+                        <span class="skill-tag">Integration</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-link"></i>
                         </div>
                         <div class="skill-name">API Integration</div>
-                        <div class="skill-desc"> RESTful APIs, Biometric SDK integration</div>
+                        <div class="skill-desc">RESTful APIs, Biometric SDK integration, third-party service connections
+                        </div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- DevOps -->
-                    <div class="glass skill-card fade-in fade-in-delay-2" id="skill-devops">
+                    <div class="skill-card fade-in fade-in-delay-2" id="skill-devops">
+                        <span class="skill-bg-number">07</span>
+                        <span class="skill-tag">DevOps</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-code-branch"></i>
                         </div>
                         <div class="skill-name">DevOps</div>
-                        <div class="skill-desc">CI/CD pipelines, server deployment, network configuration
-                        </div>
+                        <div class="skill-desc">CI/CD pipelines, server deployment, network configuration</div>
+                        <div class="skill-card-bar"></div>
                     </div>
 
                     <!-- UI/UX -->
-                    <div class="glass skill-card fade-in fade-in-delay-3" id="skill-uiux">
+                    <div class="skill-card fade-in fade-in-delay-3" id="skill-uiux">
+                        <span class="skill-bg-number">08</span>
+                        <span class="skill-tag">Design</span>
                         <div class="skill-icon">
                             <i class="fa-solid fa-bezier-curve"></i>
                         </div>
                         <div class="skill-name">UI/UX Design</div>
-                        <div class="skill-desc">Clean, responsive interfaces — user-centered design thinking
+                        <div class="skill-desc">Clean, responsive interfaces — user-centered design thinking</div>
+                        <div class="skill-card-bar"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tech Carousel -->
+        <div class="tech-carousel-section fade-in">
+            <p class="tech-carousel-label">Languages &amp; Technologies</p>
+
+            <!-- Row 1 -->
+            <div class="tech-swiper-row">
+                <div class="swiper techSwiper1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                    alt="HTML"></div><span class="tech-logo-label">HTML</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                    alt="CSS"></div><span class="tech-logo-label">CSS</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                    alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                    alt="TypeScript"></div><span class="tech-logo-label">TypeScript</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                                    alt="PHP">
+                            </div><span class="tech-logo-label">PHP</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                    alt="HTML"></div><span class="tech-logo-label">HTML</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                    alt="CSS"></div><span class="tech-logo-label">CSS</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                    alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-    </div>
-
-    <!-- Tech Carousel -->
-    <div class="tech-carousel-section fade-in">
-        <p class="tech-carousel-label">Languages &amp; Technologies</p>
-
-        <!-- Row 1 -->
-        <div class="tech-swiper-row">
-            <div class="swiper techSwiper1">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                                alt="HTML"></div><span class="tech-logo-label">HTML</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                                alt="CSS"></div><span class="tech-logo-label">CSS</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                                alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                                alt="TypeScript"></div><span class="tech-logo-label">TypeScript</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                        </div><span class="tech-logo-label">PHP</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                                alt="HTML"></div><span class="tech-logo-label">HTML</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                                alt="CSS"></div><span class="tech-logo-label">CSS</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                                alt="JavaScript"></div><span class="tech-logo-label">JavaScript</span>
+            <!-- Row 2 -->
+            <div class="tech-swiper-row">
+                <div class="swiper techSwiper2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                    alt="SQL"></div><span class="tech-logo-label">SQL</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                    alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                    alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                                    alt="Swift"></div><span class="tech-logo-label">Swift</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                    alt="Java"></div><span class="tech-logo-label">Java</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                    alt="SQL"></div><span class="tech-logo-label">SQL</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                    alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                    alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Row 2 -->
-        <div class="tech-swiper-row">
-            <div class="swiper techSwiper2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                                alt="SQL"></div><span class="tech-logo-label">SQL</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-                                alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
-                                alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
-                                alt="Swift"></div><span class="tech-logo-label">Swift</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                                alt="Java"></div><span class="tech-logo-label">Java</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                                alt="SQL"></div><span class="tech-logo-label">SQL</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-                                alt="Flutter"></div><span class="tech-logo-label">Flutter / Dart</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
-                                alt="Kotlin"></div><span class="tech-logo-label">Kotlin</span>
+
+            <!-- Row 3 -->
+            <div class="tech-swiper-row">
+                <div class="swiper techSwiper3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                                    alt="C#"></div><span class="tech-logo-label">C#</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                                    alt="C++"></div><span class="tech-logo-label">C++</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
+                                    alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                    alt="Git">
+                            </div><span class="tech-logo-label">Git</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                                    alt="C#"></div><span class="tech-logo-label">C#</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                                    alt="C++"></div><span class="tech-logo-label">C++</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
+                                    alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tech-logo-wrap"><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                    alt="Git">
+                            </div><span class="tech-logo-label">Git</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- Row 3 -->
-        <div class="tech-swiper-row">
-            <div class="swiper techSwiper3">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-                                alt="C#"></div><span class="tech-logo-label">C#</span>
+        <!-- ══════════════ PROJECTS ══════════════ -->
+        <section id="projects" aria-label="Projects section">
+            <div class="container">
+                <div class="section-header"
+                    style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                    <div>
+                        <div class="section-tag">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8m-4-4v4" />
+                            </svg>
+                            Portfolio
+                        </div>
+                        <h2 class="section-title">Featured <span style="color:var(--gold)">Projects</span></h2>
+                        <p class="section-subtitle">Data is kept for privacy.</p>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                                alt="C++"></div><span class="tech-logo-label">C++</span>
+                    <!-- Lottie Animation for Projects Section -->
+                    <div id="projects-lottie-container"
+                        style="width: 250px; height: 250px; position: absolute; right: 0; top: -60px; pointer-events: none;">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
-                                alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+                </div>
+
+                <div class="projects-grid">
+
+                    <!-- Project 1: PROCTAD -->
+                    <div class="glass project-card fade-in" id="project-proctad">
+                        <div class="project-thumb">
+                            <img src="proctor.png" alt="PROCTAD Management System" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:var(--gold);">Enterprise</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">PROCTAD Management System</h3>
+                            <p class="project-desc">A comprehensive enterprise management system handling procurement,
+                                records, and administrative data for an institutional environment. Features role-based
+                                access control and network-integrated deployment.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS4</span>
+                                <span class="tech-tag">Javascript/ Jquery</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Bootstrap4</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-proctad">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-                        </div><span class="tech-logo-label">Git</span>
+
+                    <!-- Project 2: Biometric -->
+                    <div class="glass project-card fade-in fade-in-delay-1" id="project-biometric">
+                        <div class="project-thumb">
+                            <img src="biometric_record_system.png" alt="Biometric Records System" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#a78bfa;">Security</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Biometric Records System</h3>
+                            <p class="project-desc">An integrated hybrid biometric and records management system,
+                                connecting fingerprint scanners to a centralized SQL Server database. Enables real-time
+                                records and reporting for PDL's.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Jquery</span>
+                                <span class="tech-tag">Vb.net</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Biometric SDK</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-biometric">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-                                alt="C#"></div><span class="tech-logo-label">C#</span>
+
+                    <!-- Project 3: Travelert -->
+                    <div class="glass project-card fade-in fade-in-delay-2" id="project-travelert">
+                        <div class="project-thumb">
+                            <img src="travelert_image.jpg" alt="Travelert Mobile App" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Travelert Mobile App</h3>
+                            <p class="project-desc">A cross-platform travel companion based in Baguio City, "City of
+                                Pines" built with Flutter, providing
+                                real-time location services, route planning, and travel alerts. Integrates Leaflet Maps
+                                API for dynamic navigation and points of interest.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">Leaflet API</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-travelert">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                                alt="C++"></div><span class="tech-logo-label">C++</span>
+
+                    <!-- Project 4: Barangay DTR System -->
+                    <div class="glass project-card fade-in fade-in-delay-3" id="project-dtr">
+                        <div class="project-thumb">
+                            <img src="dtr_sys.png" alt="Barangay DTR Management System" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#38bdf8;">Desktop</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Barangay DTR Management System</h3>
+                            <p class="project-desc">A customized desktop Daily Time Record (DTR) system developed for
+                                Barangay San Roque in Delfin Albano, Isabela. It enables official registry management,
+                                fingerprint enrollment, attendance tracking, and automated DTR printing.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">VB.net</span>
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">SDK</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-dtr">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg"
-                                alt="VB.NET"></div><span class="tech-logo-label">VB.NET</span>
+
+                    <!-- Project 5: SFC PC Inventory Mobile App -->
+                    <div class="glass project-card fade-in fade-in-delay-4" id="project-inventory">
+                        <div class="project-thumb">
+                            <img src="sfc_inventory.jpg" alt="SFC PC Inventory Mobile App" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">SFC PC Inventory Mobile App</h3>
+                            <p class="project-desc">A robust mobile application developed for Saint Ferdinand College to
+                                manage and monitor computer laboratory inventory. Features include a PC overview
+                                dashboard, QR/barcode scanning for asset auditing, room-wise PC mapping, and detailed
+                                logs history.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Flutter/ Dart</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-inventory">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="tech-logo-wrap"><img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-                        </div><span class="tech-logo-label">Git</span>
+
+                    <!-- Project 6: SSS-Sync -->
+                    <div class="glass project-card fade-in fade-in-delay-5" id="project-sss-sync">
+                        <div class="project-thumb">
+                            <img src="sss.png" alt="SSS-Sync Web Portal" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#3b82f6;">Web
+                                    Portal</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">SSS-Sync Web Portal</h3>
+                            <p class="project-desc">SSS-Sync is a dedicated web portal developed for the SSS Ilagan
+                                Branch
+                                to streamline digital services and improve accessibility for local constituents. The
+                                platform serves as a centralized hub featuring virtual queue management tools and
+                                easy-to-navigate mobile application tutorials. Built for reliability and performance,
+                                the
+                                project's source code is managed via GitHub, integrated with modern deployment
+                                pipelines,
+                                and secured using Cloudflare for robust infrastructure and traffic optimization.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">GitHub</span>
+                                <span class="tech-tag">Cloudflare</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-sss-sync">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- Project 3: ATMOS-CTL -->
+                    <div class="glass project-card fade-in fade-in-delay-2" id="project-atmos">
+                        <div class="project-thumb">
+                            <img src="atmos.png" alt="ATMOS-CTL Environmental Telemetry Portal" />
+                            <div class="thumb-overlay"></div>
+                            <div class="thumb-icon">
+                                <span
+                                    style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#60a5fa;">IoT
+                                    / Telemetry</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">ATMOS-CTL Telemetry Portal</h3>
+                            <p class="project-desc">An environmental monitoring and telemetry portal tracking real-time
+                                sensor data including humidity, ambient temperature, air quality, and thermal array
+                                imaging powered by ESP32 microcontrollers[cite: 2].</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">ESP32</span>
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Sensors API</span>
+                            </div>
+                            <a href="#" class="project-link" id="link-atmos">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-    </div>
-    </div>
-    </section>
-
-    <!-- ══════════════ PROJECTS ══════════════ -->
-    <section id="projects" aria-label="Projects section">
-        <div class="container">
-            <div class="section-header"
-                style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                <div>
+        <!-- ══════════════ ABOUT ══════════════ -->
+        <section id="about" aria-label="About section">
+            <div class="container">
+                <div class="section-header">
                     <div class="section-tag">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                            <rect x="2" y="3" width="20" height="14" rx="2" />
-                            <path d="M8 21h8m-4-4v4" />
+                            <path
+                                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
                         </svg>
-                        Portfolio
+                        About Me
                     </div>
-                    <h2 class="section-title">Featured <span style="color:var(--gold)">Projects</span></h2>
-                    <p class="section-subtitle">Data is kept for privacy.</p>
+                    <h2 class="section-title">The <span style="color:var(--gold)">Developer</span> Behind the Code</h2>
                 </div>
-                <!-- Lottie Animation for Projects Section -->
-                <div id="projects-lottie-container"
-                    style="width: 250px; height: 250px; position: absolute; right: 0; top: -60px; pointer-events: none;">
-                </div>
-            </div>
-
-            <div class="projects-grid">
-
-                <!-- Project 1: PROCTAD -->
-<div class="glass project-card fade-in" id="project-proctad">
-    <div class="project-thumb">
-        <img src="proctor.png" alt="PROCTAD Management System" />
-        <div class="thumb-overlay"></div>
-        <div class="thumb-icon">
-            <span
-                style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:var(--gold);">Enterprise</span>
-        </div>
-    </div>
-    <div class="project-body">
-        <h3 class="project-title">PROCTAD Management System</h3>
-        <p class="project-desc">A comprehensive enterprise management system handling procurement,
-            records, and administrative data for an institutional environment. Features role-based
-            access control and network-integrated deployment.</p>
-        <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS4</span>
-            <span class="tech-tag">Javascript/ Jquery</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">Bootstrap4</span>
-        </div>
-        <a href="#" class="project-link" id="link-proctad">
-            View Details
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-            </svg>
-        </a>
-    </div>
-</div>
-
-                <!-- Project 2: Biometric -->
-                <div class="glass project-card fade-in fade-in-delay-1" id="project-biometric">
-                    <div class="project-thumb">
-                        <img src="biometric_record_system.png" alt="Biometric Records System" />
-                        <div class="thumb-overlay"></div>
-                        <div class="thumb-icon">
-                            <span
-                                style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#a78bfa;">Security</span>
+                <div class="about-inner">
+                    <!-- Image Placeholder -->
+                    <div class="about-img-wrap fade-in">
+                        <div class="about-placeholder" style="background:none;border:none;padding:0;">
+                            <img src="ivan-profile.jpg" alt="Ivan Joe A. Acosta"
+                                style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);display:block;" />
                         </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Biometric Records System</h3>
-                        <p class="project-desc">An integrated hybrid biometric and records management system,
-                            connecting fingerprint scanners to a centralized SQL Server database. Enables real-time
-                            records and reporting for PDL's.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">Jquery</span>
-                            <span class="tech-tag">Vb.net</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Biometric SDK</span>
-                        </div>
-                        <a href="#" class="project-link" id="link-biometric">
-                            View Details
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Travelert -->
-                <div class="glass project-card fade-in fade-in-delay-2" id="project-travelert">
-                    <div class="project-thumb">
-                        <img src="travelert_image.jpg" alt="Travelert Mobile App" />
-                        <div class="thumb-overlay"></div>
-                        <div class="thumb-icon">
-                            <span
-                                style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Travelert Mobile App</h3>
-                        <p class="project-desc">A cross-platform travel companion based in Baguio City, "City of
-                            Pines" built with Flutter, providing
-                            real-time location services, route planning, and travel alerts. Integrates Leaflet Maps
-                            API for dynamic navigation and points of interest.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Leaflet API</span>
-                        </div>
-                        <a href="#" class="project-link" id="link-travelert">
-                            View Details
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Barangay DTR System -->
-                <div class="glass project-card fade-in fade-in-delay-3" id="project-dtr">
-                    <div class="project-thumb">
-                        <img src="dtr_sys.png" alt="Barangay DTR Management System" />
-                        <div class="thumb-overlay"></div>
-                        <div class="thumb-icon">
-                            <span
-                                style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#38bdf8;">Desktop</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Barangay DTR Management System</h3>
-                        <p class="project-desc">A customized desktop Daily Time Record (DTR) system developed for
-                            Barangay San Roque in Delfin Albano, Isabela. It enables official registry management,
-                            fingerprint enrollment, attendance tracking, and automated DTR printing.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">VB.net</span>
-                            <span class="tech-tag">SQL Server</span>
-                            <span class="tech-tag">SDK</span>
-                        </div>
-                        <a href="#" class="project-link" id="link-dtr">
-                            View Details
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5: SFC PC Inventory Mobile App -->
-                <div class="glass project-card fade-in fade-in-delay-4" id="project-inventory">
-                    <div class="project-thumb">
-                        <img src="sfc_inventory.jpg" alt="SFC PC Inventory Mobile App" />
-                        <div class="thumb-overlay"></div>
-                        <div class="thumb-icon">
-                            <span
-                                style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#22c55e;">Mobile</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">SFC PC Inventory Mobile App</h3>
-                        <p class="project-desc">A robust mobile application developed for Saint Ferdinand College to
-                            manage and monitor computer laboratory inventory. Features include a PC overview
-                            dashboard, QR/barcode scanning for asset auditing, room-wise PC mapping, and detailed
-                            logs history.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Flutter/ Dart</span>
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">REST API</span>
-                        </div>
-                        <a href="#" class="project-link" id="link-inventory">
-                            View Details
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6: SSS-Sync -->
-                <div class="glass project-card fade-in fade-in-delay-5" id="project-sss-sync">
-                    <div class="project-thumb">
-                        <img src="sss.png" alt="SSS-Sync Web Portal" />
-                        <div class="thumb-overlay"></div>
-                        <div class="thumb-icon">
-                            <span
-                                style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#3b82f6;">Web
-                                Portal</span>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">SSS-Sync Web Portal</h3>
-                        <p class="project-desc">SSS-Sync is a dedicated web portal developed for the SSS Ilagan Branch
-                            to streamline digital services and improve accessibility for local constituents. The
-                            platform serves as a centralized hub featuring virtual queue management tools and
-                            easy-to-navigate mobile application tutorials. Built for reliability and performance, the
-                            project's source code is managed via GitHub, integrated with modern deployment pipelines,
-                            and secured using Cloudflare for robust infrastructure and traffic optimization.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">GitHub</span>
-                            <span class="tech-tag">Cloudflare</span>
-                        </div>
-                        <a href="#" class="project-link" id="link-sss-sync">
-                            View Details
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-
-                <!-- Project 3: ATMOS-CTL -->
-<div class="glass project-card fade-in fade-in-delay-2" id="project-atmos">
-    <div class="project-thumb">
-        <img src="atmos.png" alt="ATMOS-CTL Environmental Telemetry Portal" />
-        <div class="thumb-overlay"></div>
-        <div class="thumb-icon">
-            <span
-                style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:6px;padding:3px 8px;font-size:0.7rem;font-weight:700;color:#60a5fa;">IoT / Telemetry</span>
-        </div>
-    </div>
-    <div class="project-body">
-        <h3 class="project-title">ATMOS-CTL Telemetry Portal</h3>
-        <p class="project-desc">An environmental monitoring and telemetry portal tracking real-time sensor data including humidity, ambient temperature, air quality, and thermal array imaging powered by ESP32 microcontrollers[cite: 2].</p>
-        <div class="tech-stack">
-            <span class="tech-tag">ESP32</span>
-            <span class="tech-tag">IoT</span>
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Sensors API</span>
-        </div>
-        <a href="#" class="project-link" id="link-atmos">
-            View Details
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-            </svg>
-        </a>
-    </div>
-</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══════════════ ABOUT ══════════════ -->
-    <section id="about" aria-label="About section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                        <path
-                            d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                    </svg>
-                    About Me
-                </div>
-                <h2 class="section-title">The <span style="color:var(--gold)">Developer</span> Behind the Code</h2>
-            </div>
-            <div class="about-inner">
-                <!-- Image Placeholder -->
-                <div class="about-img-wrap fade-in">
-                    <div class="about-placeholder" style="background:none;border:none;padding:0;">
-                        <img src="ivan-profile.jpg" alt="Ivan Joe A. Acosta"
-                            style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);display:block;" />
-                    </div>
-                    <div class="about-info-card">
-                        <div class="about-card-row">
-                            <span class="about-card-icon">
-                                <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="about-card-text">City of Ilagan</div>
-                                <div class="about-card-sub">Philippines</div>
+                        <div class="about-info-card">
+                            <div class="about-card-row">
+                                <span class="about-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="about-card-text">Delfin Albano</div>
+                                    <div class="about-card-sub">Philippines</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="about-card-row">
-                            <span class="about-card-icon">
-                                <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
-                                    <path
-                                        d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 3L6 10v6h12v-6l-6-4z" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="about-card-text">BSIT</div>
-                                <div class="about-card-sub">Graduate 2026</div>
+                            <div class="about-card-row">
+                                <span class="about-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="var(--gold)" width="16" height="16">
+                                        <path
+                                            d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm7 3L6 10v6h12v-6l-6-4z" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <div class="about-card-text">BSIT</div>
+                                    <div class="about-card-sub">Graduate 2026</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Content -->
-                <div class="fade-in fade-in-delay-1">
-                    <div class="about-bio">
-                        <p>I'm Ivan Joe A. Acosta, specializing in Frontend Web and Application Development. I'm
-                            based in the City of Ilagan, Isabela, Philippines, and I create modern UI and UX
-                            solutions. I'm passionate about building practical, well-engineered solutions that solve
-                            real-world problems for users.</p>
+                    <!-- Content -->
+                    <div class="fade-in fade-in-delay-1">
+                        <div class="about-bio">
+                            <p>I'm Ivan Joe A. Acosta, specializing in Frontend Web and Application Development. I'm
+                                based in the Delfin Albano, Isabela, Philippines, and I create modern UI and UX
+                                solutions. I'm passionate about building practical, well-engineered solutions that solve
+                                real-world problems for users.</p>
 
-                        <p>My journey in technology spans web development, mobile applications, database management,
-                            and network infrastructure. I thrive at the intersection of software and systems,
-                            whether
-                            it's developing applications, building websites, or deploying secure network
-                            environments.</p>
+                            <p>My journey in technology spans web development, mobile applications, database management,
+                                and network infrastructure. I thrive at the intersection of software and systems,
+                                whether
+                                it's developing applications, building websites, or deploying secure network
+                                environments.</p>
 
-                        <p>I'm a graduate of the Bachelor of Science in Information Technology from Saint Ferdinand
-                            College, and I'm always eager to learn and take on challenging projects that push my
-                            boundaries.</p>
-                    </div>
-
-                    <div class="about-education">
-                        <div class="edu-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                            </svg>
+                            <p>I'm a graduate of the Bachelor of Science in Information Technology from Saint Ferdinand
+                                College, and I'm always eager to learn and take on challenging projects that push my
+                                boundaries.</p>
                         </div>
-                        <div>
-                            <div class="edu-school">Saint Ferdinand College</div>
-                            <div class="edu-degree">Bachelor of Science in Information Technology</div>
-                            <span class="edu-year">Graduated: 2026</span>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-    </section>
-
-    <!-- ══════════════ CONTACT ══════════════ -->
-    <section id="contact" aria-label="Contact section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
-                        <path
-                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                    </svg>
-                    Get in Touch
-                </div>
-                <h2 class="section-title">Let's <span style="color:var(--gold)">Connect</span></h2>
-                <p class="section-subtitle">Looking for a reliable developer to bring your project to life or join
-                    your team? I'm currently accepting IT related opportunities.</p>
-            </div>
-
-            <div class="contact-inner">
-                <!-- Contact Info -->
-                <div class="fade-in">
-                    <div class="contact-info">
-                        <h3>Hire Me</h3>
-                        <p>Whether you have a clear project scope, an open developer position, or need a technical
-                            solution for your business, My inbox is always open. Let's discuss how I can add value
-                            to your team.</p>
-                    </div>
-                    <div class="contact-links">
-                        <a href="mailto:ivanjoea.acosta@email.com" class="contact-link" id="contact-email">
-                            <div class="contact-link-icon">
+                        <div class="about-education">
+                            <div class="edu-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
                                 </svg>
                             </div>
                             <div>
-                                <div class="contact-link-label">Email</div>
-                                <div class="contact-link-value">acostaivanjoe6@email.com</div>
+                                <div class="edu-school">Saint Ferdinand College</div>
+                                <div class="edu-degree">Bachelor of Science in Information Technology</div>
+                                <span class="edu-year">Graduated: 2026</span>
                             </div>
-                        </a>
-                        <a href="https://github.com/ivanjoea-acosta" target="_blank" rel="noopener" class="contact-link"
-                            id="contact-github">
-                            <div class="contact-link-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                    <path
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="contact-link-label">GitHub</div>
-                                <div class="contact-link-value">github.com/Vane-alt</div>
-                            </div>
-                        </a>
-                        <a href="https://linkedin.com/in/ivanjoea-acosta" target="_blank" rel="noopener"
-                            class="contact-link" id="contact-linkedin">
-                            <div class="contact-link-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-                                    <path
-                                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-                                    <rect x="2" y="9" width="4" height="12" />
-                                    <circle cx="4" cy="4" r="2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="contact-link-label">LinkedIn</div>
-                                <div class="contact-link-value">linkedin.com/in/ivan-acosta-ba6472342/</div>
-                            </div>
-                        </a>
+                        </div>
+
                     </div>
                 </div>
+        </section>
 
-                <!-- Contact Visual (Lottie Animation) -->
-                <div class="glass fade-in fade-in-delay-1" id="lottie-container"
-                    style="padding:2rem;border-radius:var(--radius); display: flex; align-items: center; justify-content: center; width: 100%; min-height: 10px; height: 450px; margin: 0 auto;">
+        <!-- ══════════════ CONTACT ══════════════ -->
+        <section id="contact" aria-label="Contact section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12">
+                            <path
+                                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        Get in Touch
+                    </div>
+                    <h2 class="section-title">Let's <span style="color:var(--gold)">Connect</span></h2>
+                    <p class="section-subtitle">Looking for a reliable developer to bring your project to life or join
+                        your team? I'm currently accepting IT related opportunities.</p>
                 </div>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-                <script src="animation_data.js"></script>
-                <script src="projects_animation_data.js"></script>
-                <script>
-                    if (typeof lottieData !== 'undefined') {
-                        lottie.loadAnimation({
-                            container: document.getElementById('lottie-container'),
-                            renderer: 'svg',
-                            loop: true,
-                            autoplay: true,
-                            animationData: lottieData
-                        });
-                    } else {
-                        console.error("Lottie data not loaded. Make sure animation_data.js is present.");
-                    }
 
-                    // Load the projects section animation
-                    if (document.getElementById('projects-lottie-container') && typeof projectsLottieData !== 'undefined') {
-                        lottie.loadAnimation({
-                            container: document.getElementById('projects-lottie-container'),
-                            renderer: 'svg',
-                            loop: true,
-                            autoplay: true,
-                            animationData: projectsLottieData
-                        });
-                    } else {
-                        console.error("Projects Lottie data not loaded. Make sure projects_animation_data.js is present.");
-                    }
-                </script>
+                <div class="contact-inner">
+                    <!-- Contact Info -->
+                    <div class="fade-in">
+                        <div class="contact-info">
+                            <h3>Hire Me</h3>
+                            <p>Whether you have a clear project scope, an open developer position, or need a technical
+                                solution for your business, My inbox is always open. Let's discuss how I can add value
+                                to your team.</p>
+                        </div>
+                        <div class="contact-links">
+                            <a href="mailto:ivanjoea.acosta@email.com" class="contact-link" id="contact-email">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-link-label">Email</div>
+                                    <div class="contact-link-value">acostaivanjoe6@email.com</div>
+                                </div>
+                            </a>
+                            <a href="https://github.com/ivanjoea-acosta" target="_blank" rel="noopener"
+                                class="contact-link" id="contact-github">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-link-label">GitHub</div>
+                                    <div class="contact-link-value">github.com/Vane-alt</div>
+                                </div>
+                            </a>
+                            <a href="https://linkedin.com/in/ivanjoea-acosta" target="_blank" rel="noopener"
+                                class="contact-link" id="contact-linkedin">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+                                        <path
+                                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-link-label">LinkedIn</div>
+                                    <div class="contact-link-value">linkedin.com/in/ivan-acosta-ba6472342/</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-            </div>
-    </section>
+                    <!-- Contact Visual (Lottie Animation) -->
+                    <div class="glass fade-in fade-in-delay-1" id="lottie-container"
+                        style="padding:2rem;border-radius:var(--radius); display: flex; align-items: center; justify-content: center; width: 100%; min-height: 10px; height: 450px; margin: 0 auto;">
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+                    <script src="animation_data.js"></script>
+                    <script src="projects_animation_data.js"></script>
+                    <script>
+                        if (typeof lottieData !== 'undefined') {
+                            lottie.loadAnimation({
+                                container: document.getElementById('lottie-container'),
+                                renderer: 'svg',
+                                loop: true,
+                                autoplay: true,
+                                animationData: lottieData
+                            });
+                        } else {
+                            console.error("Lottie data not loaded. Make sure animation_data.js is present.");
+                        }
+
+                        // Load the projects section animation
+                        if (document.getElementById('projects-lottie-container') && typeof projectsLottieData !== 'undefined') {
+                            lottie.loadAnimation({
+                                container: document.getElementById('projects-lottie-container'),
+                                renderer: 'svg',
+                                loop: true,
+                                autoplay: true,
+                                animationData: projectsLottieData
+                            });
+                        } else {
+                            console.error("Projects Lottie data not loaded. Make sure projects_animation_data.js is present.");
+                        }
+                    </script>
+
+                </div>
+        </section>
 
     </div><!-- end .page -->
 
